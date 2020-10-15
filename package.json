@@ -12,7 +12,6 @@
   "dependencies": {
     "@sendgrid/mail": "^7.3.0",
     "axios": "^0.20.0",
-    "json2html": "0.0.8",
-    "snoowrap": "^1.21.0"
+    "json2html": "0.0.8"
   }
 }

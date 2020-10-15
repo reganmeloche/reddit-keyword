@@ -4,14 +4,17 @@ const sgMail = require('@sendgrid/mail');
 const json2html = require('json2html');
 
 const keys = require('./config/keys');
-
 sgMail.setApiKey(keys.sendgridKey);
 
 const run = async () => {
-    const topic = "kimchi";
-    const accessToken = await getAccessToken();
-    const results = await keywordSearch(topic, 'new', 20, accessToken);
-    await emailResults(results);
+    try {
+        const topic = "kimchi";
+        const accessToken = await getAccessToken();
+        const results = await keywordSearch(topic, 'new', 20, accessToken);
+        await emailResults(results);
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 const emailResults = async (results) => {
@@ -26,7 +29,7 @@ const emailResults = async (results) => {
         to,
         from,
         subject: 'Daily Reddit Notifications',
-        text: '',
+        text: 'test',
         html: json2html.render(resObj),
     };
 
